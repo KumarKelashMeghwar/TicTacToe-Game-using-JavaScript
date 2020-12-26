@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+
+        body{
+            background-color: #eee;
+        }
+
+        .container{
+            margin-top: 45px;
+            margin-left: 20px;
+        }
+
+        .text{
+            color: tomato;
+            margin-left: 176px;
+            text-decoration: underline;
+            font-weight: bold;
+            font-size: 2.5rem;
+        }
+
+        #line1,#line2,#line3{
+            display: flex;
+        }
+
+        .btn{
+            width: 150px;
+            background-color: palegreen;
+            height: 150px;
+            font-size: 3rem;
+            border: 1px solid #fff;
+            outline-style: none;
+            cursor: pointer;
+        }
+
+        .notAllowed{
+            cursor: not-allowed;
+        }
+
+        @media screen and (max-width: 550px){
+            .text{
+                margin-left: 110px;
+            }
+
+            .container{
+                margin-left: 0px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="text">Tic Tac Toe</div>
+
+   <div class="container">
+        <div id="line1">
+            <button class="btn btn1"></button>
+            <button class="btn btn2"></button>
+            <button class="btn btn3"></button>
+        </div>
+        <div id="line2">
+            <button class="btn btn4"></button>
+            <button class="btn btn5"></button>
+            <button class="btn btn6"></button>
+        </div>
+        <div id="line3">
+            <button class="btn btn7"></button>
+            <button class="btn btn8"></button>
+            <button class="btn btn9"></button>
+        </div>
+   </div>
+
+   <script>
+        let player1_turn;   
+
+        let random = Math.floor((Math.random()*2));
+        const TEXT = document.querySelector(".text");
+
+        
+
+        if(random==1)
+        {
+            TEXT.innerHTML = "X's turn";
+            player1_turn = true;
+        }
+        else{
+            TEXT.innerHTML = "O's turn";
+            player1_turn = false;
+        }
+       
+        let buttonClicked = document.querySelectorAll('.btn');
+
+        oWins = () =>{
+            if(buttonClicked[0].innerHTML=="O"&&buttonClicked[1].innerHTML=="O"&&buttonClicked[2].innerHTML=="O"){
+                for(let k=0; k<=2; k++){
+                    buttonClicked[k].style.backgroundColor = "pink";
+                }
+                TEXT.innerHTML = "O Wins";
+            }
+
+            else if(buttonClicked[3].innerHTML=="O"&&buttonClicked[4].innerHTML=="O"&&buttonClicked[5].innerHTML=="O"){
+                for(let k=3; k<=5; k++){
+                    buttonClicked[k].style.backgroundColor = "pink";
+                }
+                TEXT.innerHTML = "O Wins";
+            }
+
+            else if(buttonClicked[6].innerHTML=="O"&&buttonClicked[7].innerHTML=="O"&&buttonClicked[8].innerHTML=="O"){
+                for(let k=6; k<=8; k++){
+                    buttonClicked[k].style.backgroundColor = "pink";
+                }
+                TEXT.innerHTML = "O Wins";
+            }
+
+            else if(buttonClicked[0].innerHTML=="O"&&buttonClicked[3].innerHTML=="O"&&buttonClicked[6].innerHTML=="O"){
+                buttonClicked[0].style.backgroundColor = "pink";
+                buttonClicked[3].style.backgroundColor = "pink";
+                buttonClicked[6].style.backgroundColor = "pink";
+                TEXT.innerHTML = "O Wins";
+            }
+
+            else if(buttonClicked[1].innerHTML=="O"&&buttonClicked[4].innerHTML=="O"&&buttonClicked[7].innerHTML=="O"){
+                buttonClicked[1].style.backgroundColor = "pink";
+                buttonClicked[4].style.backgroundColor = "pink";
+                buttonClicked[7].style.backgroundColor = "pink";
+                TEXT.innerHTML = "O Wins";
+            }
+
+            else if(buttonClicked[2].innerHTML=="O"&&buttonClicked[5].innerHTML=="O"&&buttonClicked[8].innerHTML=="O"){
+                buttonClicked[2].style.backgroundColor = "pink";
+                buttonClicked[5].style.backgroundColor = "pink";
+                buttonClicked[8].style.backgroundColor = "pink";
+                TEXT.innerHTML = "O Wins";
+            }
+
+            else if(buttonClicked[0].innerHTML=="O"&&buttonClicked[4].innerHTML=="O"&&buttonClicked[8].innerHTML=="O"){
+                for(let k=0; k<=2; k++){
+                    buttonClicked[k*4].style.backgroundColor = "pink";
+                }
+                TEXT.innerHTML = "O Wins";
+            }
+
+            else if(buttonClicked[2].innerHTML=="O"&&buttonClicked[4].innerHTML=="O"&&buttonClicked[6].innerHTML=="O"){
+                for(let k=1; k<=3; k++){
+                    buttonClicked[k*2].style.backgroundColor = "pink";
+                }
+                TEXT.innerHTML = "O Wins";
+            }
+
+        }
+
+
+        xWins = () =>{
+            if(buttonClicked[0].innerHTML=="X"&&buttonClicked[1].innerHTML=="X"&&buttonClicked[2].innerHTML=="X"){
+                for(let k=0; k<=2; k++){
+                    buttonClicked[k].style.backgroundColor = "pink";
+                }
+                TEXT.innerHTML = "X Wins";
+            }
+
+            else if(buttonClicked[3].innerHTML=="X"&&buttonClicked[4].innerHTML=="X"&&buttonClicked[5].innerHTML=="X"){
+                for(let k=3; k<=5; k++){
+                    buttonClicked[k].style.backgroundColor = "pink";
+                }
+                TEXT.innerHTML = "X Wins";
+            }
+
+            else if(buttonClicked[6].innerHTML=="X"&&buttonClicked[7].innerHTML=="X"&&buttonClicked[8].innerHTML=="X"){
+                for(let k=6; k<=8; k++){
+                    buttonClicked[k].style.backgroundColor = "pink";
+                }
+                TEXT.innerHTML = "X Wins";
+            }
+
+            else if(buttonClicked[0].innerHTML=="X"&&buttonClicked[3].innerHTML=="X"&&buttonClicked[6].innerHTML=="X"){
+                buttonClicked[0].style.backgroundColor = "pink";
+                buttonClicked[3].style.backgroundColor = "pink";
+                buttonClicked[6].style.backgroundColor = "pink";
+                TEXT.innerHTML = "X Wins";
+            }
+
+            else if(buttonClicked[1].innerHTML=="X"&&buttonClicked[4].innerHTML=="X"&&buttonClicked[7].innerHTML=="X"){
+                buttonClicked[1].style.backgroundColor = "pink";
+                buttonClicked[4].style.backgroundColor = "pink";
+                buttonClicked[7].style.backgroundColor = "pink";
+                TEXT.innerHTML = "X Wins";
+            }
+
+            else if(buttonClicked[2].innerHTML=="X"&&buttonClicked[5].innerHTML=="X"&&buttonClicked[8].innerHTML=="X"){
+                buttonClicked[2].style.backgroundColor = "pink";
+                buttonClicked[5].style.backgroundColor = "pink";
+                buttonClicked[8].style.backgroundColor = "pink";
+                TEXT.innerHTML = "X Wins";
+            }
+
+            else if(buttonClicked[0].innerHTML=="X"&&buttonClicked[4].innerHTML=="X"&&buttonClicked[8].innerHTML=="X"){
+                for(let k=0; k<=2; k++){
+                    buttonClicked[k*4].style.backgroundColor = "pink";
+                }
+                TEXT.innerHTML = "X Wins";
+            }
+
+            else if(buttonClicked[2].innerHTML=="X"&&buttonClicked[4].innerHTML=="X"&&buttonClicked[6].innerHTML=="X"){
+                for(let k=1; k<=3; k++){
+                    buttonClicked[k*2].style.backgroundColor = "pink";
+                }
+                TEXT.innerHTML = "X Wins";
+            }
+
+           
+
+
+        }
+       
+        for(let i=0; i<buttonClicked.length; i++){
+            buttonClicked[i].addEventListener('click',()=>{
+                if(player1_turn == true){
+                    if(buttonClicked[i].innerHTML ==""){
+                        buttonClicked[i].style.color = 'hotpink';
+                        buttonClicked[i].style.textShadow = '3px 6px 10px hotpink';
+                        buttonClicked[i].innerHTML = "X";
+                        TEXT.innerHTML = "O's turn";
+                        player1_turn = false;
+                    }
+                }
+                
+                else if(player1_turn == false){                    
+                    if(buttonClicked[i].innerHTML ==""){
+                        buttonClicked[i].style.color = "blue";
+                        buttonClicked[i].innerHTML = "O";
+                        buttonClicked[i].style.textShadow = '3px 6px 10px cyan';
+                        TEXT.innerHTML = "X's turn";
+                        player1_turn = true;    
+                    }
+                }
+
+                // For O's Winning
+                oWins();
+                
+                // For X's winning
+                xWins();
+
+                if(TEXT.innerHTML == "X Wins" || TEXT.innerHTML =="O Wins")
+                {
+                    for(let a=0; a<buttonClicked.length; a++)
+                    {
+                        buttonClicked[a].setAttribute('disabled',true);
+                        buttonClicked[a].classList.add("notAllowed");
+                    }
+                    
+                }
+                
+            }); 
+        }
+        
+
+      
+
+    </script>
+
+</body>
+</html>
